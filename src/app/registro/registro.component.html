@@ -1,0 +1,50 @@
+<div class="login-page" [@routerTransition]>
+  <div class="row justify-content-md-center">
+    <div class="col-md-4">
+      <div class="text-center">
+        <img src="assets/images/logo1.png" width="150px" class="user-avatar" />
+        <br />
+        <h3>Registro de nuevo usuario</h3>
+      </div>
+      <form role="form" (ngSubmit)="onLoggedin()">
+        <div class="form-content">
+          <div class="form-group">
+            <label for="">Nombre de usuario:</label>
+            <input type="text" [(ngModel)]="usuario" class="form-control input-underline input-lg" name="usuario"
+              placeholder="{{ 'Usuario' }}" />
+          </div>
+          <div class="form-group">
+            <label for="">Correo electrónico:</label>
+            <input type="email" [(ngModel)]="email" class="form-control input-underline input-lg" name="email"
+              placeholder="{{ 'Email' }}" />
+          </div>
+
+          <div class="form-group">
+            <label for="">Contraseña:</label>
+            <input type="password" [(ngModel)]="contrasenna" class="form-control input-underline input-lg"
+              name="contrasenna" placeholder="{{ 'Password'  }}" />
+          </div>
+          <div class="form-group">
+            <label for="">Repetir contraseña:</label>
+            <input type="password" [(ngModel)]="repetir_contrasenna" class="form-control input-underline input-lg"
+              name="repetir_contrasenna" placeholder="{{ 'Repetir contraseña'  }}" />
+          </div>
+        </div>
+        <div class="text-center">
+          <button type="submit" class="btn rounded-btn">
+            <i class="fa fa-sign-in-alt"></i> Registrarse
+          </button>
+        </div>
+      </form>
+      <br>
+      <div class="botones">
+        <facebook-login-button (socialUser)="getSocialUser($event)" [text]="'Con Facebook'"></facebook-login-button>
+        <google-login-button (socialUser)="getSocialUser($event)" [text]="'Con Google'"></google-login-button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<swal #alertSwal title="Credenciales incorrectas" text="Por favor, intente nuevamente" type="warning"
+  [showCancelButton]="false" [focusCancel]="true">
+</swal>

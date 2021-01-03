@@ -1,0 +1,26 @@
+<div class="page-wrapper" [ngClass]="{ toggled: getSideBarState() }">
+  <app-sidebar></app-sidebar>
+  <main class="page-content">
+    <div class="contenedor">
+      <div class="row">
+        <div class="form-group col-md-12">
+          <router-outlet></router-outlet>
+        </div>
+      </div>
+      <div class="attribution text-center badge badge-primary">
+        DYMSoft 2019 &copy; Derechos Reservados
+      </div>
+
+      <i
+        id="close-sidebar"
+        class="fa fa-arrow-circle-right"
+        (click)="toggleSidebar()"
+        *ngIf="getSideBarState()"
+        placement="bottom"
+        tooltip="Abrir menú"
+      ></i>
+    </div>
+  </main>
+
+  <!-- <a href="https://github.com/azouaoui-med/angular-pro-sidebar"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png" alt="Fork me on GitHub"></a> -->
+</div>

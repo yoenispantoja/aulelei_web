@@ -1,0 +1,61 @@
+@font-face {
+  font-family: "ATRotisSansSerif";
+  src: url("../../../../../assets/fonts/ATRotisSansSerif/atrss__0.TTF") format("truetype");
+}
+
+.image-upload img {
+  cursor: pointer;
+}
+
+.image-upload>input {
+  display: none;
+}
+
+.clsAvatar {
+  text-align: center;
+}
+
+.divEvento {
+  text-align: center;
+  margin-bottom: 30px;
+  padding-bottom: 30px;
+  border: 1px solid #cfcfcf;
+}
+
+.avatar{
+margin-top: 15px;
+display: block;
+height: 450px;
+}
+
+.containerFotos {
+  margin: 40px;
+}
+
+.precio{
+  font-size: 16px;
+  margin-right: 8px;
+}
+
+#list-tab{
+  font-family: 'ATRotisSansSerif', "Open Sans"!important;
+  font-size: 18px;
+}
+
+.acciones{
+  margin-right: 8px;
+  i{
+    margin-left: 4px;
+  }
+
+  i:hover{
+    cursor: pointer;
+    transform: rotate(-6deg);
+  }
+}
+
+.cabezal {
+  display: grid;
+  grid-template-columns: auto auto;
+  justify-content: space-between;
+}

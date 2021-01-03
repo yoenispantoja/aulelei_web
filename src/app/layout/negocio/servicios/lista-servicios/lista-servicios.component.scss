@@ -1,0 +1,51 @@
+@font-face {
+  font-family: "ATRotisSansSerif";
+  src: url("../../../../../assets/fonts/ATRotisSansSerif/atrss__0.TTF") format("truetype");
+}
+
+.titlePage {
+  display: grid;
+  grid-template-columns: auto auto;
+  justify-content: space-between;
+
+  .linkAdicionar {
+    height: 32px;
+    width: 150px;
+  }
+}
+
+.avatarServicio{
+  width: 72px;
+  height: 72px;
+  object-fit: cover;
+}
+
+.precio{
+  font-size: 16px;
+  margin-right: 8px;
+}
+
+#list-tab{
+  font-family: 'ATRotisSansSerif', "Open Sans"!important;
+  font-size: 18px;
+}
+
+.acciones{
+  margin-right: 8px;
+  i{
+    margin-left: 4px;
+  }
+
+  i:hover{
+    cursor: pointer;
+    transform: rotate(-6deg);
+  }
+}
+
+.cabezal {
+  display: grid;
+  grid-template-columns: auto auto;
+  justify-content: space-between;
+}
+
+

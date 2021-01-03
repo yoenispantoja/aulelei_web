@@ -1,0 +1,39 @@
+<div class="sitio paginas-internas">
+  <section class="bienvenidos">
+    <div class="texto-encabezado text-center">
+        <div class="container">
+            <h1 class="display-4 wow bounceIn">Tienda</h1>
+        </div>
+    </div>
+</section>
+<section class="ruta py-3">
+    <div class="container">
+        <div class="text-right">
+            <div class="col-xs-12">
+                <a href="/">Inicio</a> » Tienda
+            </div>
+        </div>
+    </div>
+</section>
+<div class="py-1">
+    <div class="container gallery-container">
+      <div class="row wow fadeInUp" data-wow-delay="0.8s">
+        <div class="col-4" *ngFor="let producto of this.productos">
+          <div class="card cardProducto" style="width: 18rem;">
+            <img class="card-img-top imgProducto" src="{{producto.avatar | imagen:'producto':producto.id}}" alt="Card image cap">
+            <div class="card-body">
+                  <h5 class="card-title nombreLargo">{{producto.nombre}}</h5>
+                  <p class="card-text">{{producto.descripcion}}</p>
+                <div class="precio">
+                  <h2>{{producto.precio |currency}}</h2>
+                </div>
+              <div class="btn btn-primary text-center"><i class="fa fa-shopping-cart"></i> Agregar al carrito</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+</div>
+<app-web-footer></app-web-footer>
+</div>

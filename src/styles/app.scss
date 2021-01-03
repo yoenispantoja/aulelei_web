@@ -1,0 +1,87 @@
+/* You can add global styles to this file, and also import other style files */
+
+//@import "bootstrap/bootstrap";
+@import "spinner";
+@import "utils";
+@import "rtl";
+@import "responsive";
+@import "../assets/css/ej2.css";
+@import "../../node_modules/@syncfusion/ej2-base/styles/material.css";
+@import "../../node_modules/@syncfusion/ej2-buttons/styles/material.css";
+@import "../../node_modules/@syncfusion/ej2-calendars/styles/material.css";
+@import "../../node_modules/@syncfusion/ej2-dropdowns/styles/material.css";
+@import "../../node_modules/@syncfusion/ej2-inputs/styles/material.css";
+@import "../../node_modules/@syncfusion/ej2-lists/styles/material.css";
+@import "../../node_modules/@syncfusion/ej2-popups/styles/material.css";
+@import "../../node_modules/@syncfusion/ej2-navigations/styles/material.css";
+@import "../../node_modules/@syncfusion/ej2-angular-schedule/styles/material.css";
+@import "../../node_modules/@syncfusion/ej2-splitbuttons/styles/material.css";
+@import "../../node_modules/@syncfusion/ej2-angular-calendars/styles/material.css";
+
+@media print {
+  .breadcrumb {
+    display: none !important;
+  }
+}
+
+.header {
+  color: white;
+  margin: 10px;
+}
+
+.ng2-archwizard .steps {
+  color: red;
+}
+
+.photo-hidden {
+  display: none;
+}
+
+.person-photo {
+  cursor: url("../assets/zoom_in.cur"), default;
+}
+
+.person-original-photo-link {
+  position: fixed;
+  margin-top: -206px;
+  background-color: #000;
+  cursor: url("../assets/zoom_out.cur"), default;
+}
+
+/* You can add global styles to this file, and also import other style files */
+
+@import "~perfect-scrollbar/css/perfect-scrollbar.css";
+
+body {
+  font-size: 0.9rem;
+}
+
+.page-wrapper.toggled .sidebar {
+  left: -300px;
+}
+
+// angular perfect scrollbar style
+.sidebar .ps.ps--scrolling-y > .ps__rail-y,
+.sidebar > .ps.ps--scrolling-x > .ps__rail-x,
+.ps .ps__rail-x:hover,
+.ps .ps__rail-y:hover,
+.ps .ps__rail-x:focus,
+.ps .ps__rail-y:focus,
+.ps .ps__rail-x.ps--clicking,
+.ps .ps__rail-y.ps--clicking {
+  background-color: transparent !important;
+}
+
+.sidebar .ps.ps--active-y > .ps__rail-y:hover,
+.sidebar > .ps.ps--active-y > .ps__rail-y.ps--clicking {
+  width: 10px !important;
+}
+
+.ps__thumb-y {
+  background-color: #fff !important;
+  width: 6px !important;
+  border-radius: 0px !important;
+  opacity: 0.5;
+}
+
+

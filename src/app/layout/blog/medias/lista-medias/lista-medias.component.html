@@ -1,0 +1,16 @@
+<div [@routerTransition]>
+    <div class="titlePage">
+        <app-page-header [heading]="'Listado de medias'" [icon]="'fa-pencil-square'"></app-page-header>
+        <a routerLink="/admin/medias/adicionar-medias" [routerLinkActive]="['router-link-active']" class="btn btn-sm btn-primary linkAdicionar">
+            <i class=" fa fa-plus-circle"></i> Adicionar medias
+        </a>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <dymtabla [nombresColumnas]="nombresColumnas" [urlApi]="urlApi" [tituloReporte]="'Listado de medias'" [columnasData]="columnasData" [puedeEditar]="false" (verDetallesClick)="verDetallesMedia($event)"  (eliminarClick)="eliminarMedia($event)"></dymtabla>
+        </div>
+    </div>
+    <br />
+    <swal #successSwal title="Información" text="Registro eliminado" type="success" [showCancelButton]="false" [focusCancel]="true">
+    </swal>
+</div>

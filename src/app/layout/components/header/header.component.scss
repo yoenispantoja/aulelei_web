@@ -1,0 +1,58 @@
+$topnav-background-color: #222;
+:host {
+  .navbar {
+    background-color: $topnav-background-color;
+    .navbar-brand {
+      color: #fff;
+    }
+    .nav-item > a {
+      color: #999;
+      &:hover {
+        color: #fff;
+      }
+    }
+  }
+  .messages {
+    width: 300px;
+    .media {
+      border-bottom: 1px solid #ddd;
+      padding: 5px 10px;
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+    .media-body {
+      h5 {
+        font-size: 13px;
+        font-weight: 600;
+      }
+      .small {
+        margin: 0;
+      }
+      .last {
+        font-size: 12px;
+        margin: 0;
+      }
+    }
+  }
+}
+
+.menuUsuario {
+  font-size: 14px;
+  height: 40px;
+}
+
+.avatar {
+  display: table-cell;
+  vertical-align: middle;
+  border-radius: 50% !important;
+  width: 40px !important;
+  cursor: pointer;
+  margin-left: 20px;
+}
+
+.dropdown {
+  display: grid;
+  grid-template-columns:auto auto auto;
+  width: 340px;
+}

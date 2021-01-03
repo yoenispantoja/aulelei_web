@@ -1,0 +1,36 @@
+.image-upload img {
+    cursor: pointer;
+}
+
+.image-upload img:hover {
+    transform: rotate(3deg);
+}
+
+.image-upload>input {
+    display: none;
+}
+
+.clsImagenDestacada {
+    text-align: center;
+}
+
+.divGaleria {
+    text-align: center;
+    margin-bottom: 30px;
+    padding-bottom: 30px;
+    border: 1px solid #cfcfcf;
+}
+
+.fotosGaleria img {
+    width: 200px;
+    height: 160px;
+    margin-bottom: 50px;
+    border: 2px solid #cfcfcf;
+    border-radius: 8px;
+    margin: 10px;
+    object-fit: scale-down;
+}
+
+.containerFotos {
+    margin: 40px;
+}

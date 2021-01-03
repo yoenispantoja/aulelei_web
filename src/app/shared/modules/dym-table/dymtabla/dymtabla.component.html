@@ -1,0 +1,20 @@
+<div class="table-responsive">
+  <table
+    datatable
+    [dtOptions]="dtOptions"
+    [dtTrigger]="dtTrigger"
+    [ngClass]="'table table-bordered table-hover display nowrap'"
+    *ngIf="columnas"
+    style="width:100%"
+  >
+    <thead>
+      <tr>
+        <th *ngFor="let columna of nombresColumnas">{{columna}}</th>
+        <th class="thOperations" width="50px"></th>
+      </tr>
+    </thead>
+  </table>
+</div>
+
+<swal #questionSwal title="Información" text="¿Está seguro de eliminar este registro?" type="question" [showCancelButton]="true" [focusCancel]="true" (confirm)="eliminarRegistro()">
+</swal>

@@ -1,0 +1,15 @@
+.image-upload img {
+  cursor: pointer;
+}
+
+.image-upload img:hover {
+  transform: rotate(3deg);
+}
+
+.image-upload>input {
+  display: none;
+}
+
+.clsImagenDestacada {
+  text-align: center;
+}

@@ -1,0 +1,440 @@
+<div class="sitio">
+  <section class="bienvenidos">
+    <div class="encabezado" role="banner" id="encabezado">
+      <div class="container">
+        <a href="#" class="logo">
+          <img src="assets/images/PrimerLogo.png" alt="Logo del sitio" />
+        </a>
+        <button
+          type="button"
+          class="boton-buscar"
+          data-toggle="collapse"
+          (click)="isBuscadorCollapsed = !isBuscadorCollapsed"
+          aria-expanded="false"
+        >
+          <i class="fa fa-search" aria-hidden="true"></i>
+        </button>
+
+        <form
+          action="#"
+          id="bloque-buscar"
+          class="collapse"
+          [ngbCollapse]="isBuscadorCollapsed"
+        >
+          <div class="contenedor-bloque-buscar">
+            <input type="text" placeholder="Buscar..." />
+            <input type="submit" value="Buscar" />
+          </div>
+        </form>
+
+        <button
+          class="navbar-toggler boton-menu"
+          type="button"
+          (click)="isMenuCollapsed = !isMenuCollapsed"
+        >
+          <i class="fa fa-bars" aria-hidden="true"></i>
+        </button>
+
+        <div
+          id="menu-principal"
+          class="collapse navbar-collapse"
+          [ngbCollapse]="isMenuCollapsed"
+        >
+          <ul class="header-navigation">
+            <li class="active"><a (click)="scrollUp()">Inicio</a></li>
+            <li><a pageScroll href="#servicios">Servicios</a></li>
+            <li><a pageScroll href="#blog">Blog</a></li>
+            <li><a pageScroll href="#galeria">Galería</a></li>
+            <li><a pageScroll href="#eventos">Eventos</a></li>
+            <li><a (click)="this.goTienda()">Tienda</a></li>
+            <li><a (click)="this.abrirModalLoginCliente()">Reservar</a></li>
+            <li *ngIf="this.usuarioLogueado()">
+              <a href="">
+                <div class="dropdown">
+                  <span
+                    class="dropdown-toggle usuarioLogueado"
+                    id="dropdownMenu2"
+                    data-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                  >
+                    {{ this.textoUsuario }}
+                  </span>
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                    <button
+                      class="dropdown-item"
+                      title="Cerrar la sesión de {{ this.textoUsuario }}"
+                      (click)="usuarioClick()"
+                      type="button"
+                    >
+                      Cerrar Sesión
+                    </button>
+                  </div>
+                </div>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="texto-encabezado text-center">
+      <div class="container mt-5">
+        <h4 class="display-4 wow bounceIn">Solicite nuestros servicios</h4>
+        <p class="wow bounceIn" data-wow-delay=".3s">
+          Salón de belleza que se distingue por su creatividad, innovación y
+          calidad en los servicios de corte y cuidado del cabello. Ahora tú
+          también formas parte de nuestra Experiencia. Creamos aplicaciones
+          según las necesidades y requerimientos de nuestros clientes.
+        </p>
+        <a
+          class="btn btn-primary btn-lg"
+          (click)="this.abrirModalLoginCliente()"
+          >Reservar</a
+        >
+      </div>
+    </div>
+    <div class="flecha-bajar text-center">
+      <a pageScroll [pageScrollDuration]="2000" href="#agencia">
+        <i class="fa fa-angle-down" aria-hidden="true"></i
+      ></a>
+    </div>
+  </section>
+  <section class="nosotros">
+    <a class="anchor_offset" id="agencia"></a>
+    <div class="container mt-5">
+      <div class="row">
+        <div
+          class="col-xs-12 col-md-3 text-center wow bounceIn"
+          data-wow-delay=".6s"
+        >
+          <img
+            src="assets/images/sitio/Sesion%20DONDE%20DORIAN%20(4).jpg"
+            style="width: 100%"
+            alt=""
+          />
+        </div>
+        <div class="col-xs-12 col-md-9" data-wow-delay=".3s">
+          <h1
+            class="text-center text-left primary-text text-center font-weight-bold"
+          >
+            Nosotros
+          </h1>
+          <p>
+            Donde Dorian es un salón de belleza y estilo especializado en
+            peluquería y barbería masculina. Ofrecemos una experiencia única y
+            completa en la que encontrará el cambio de imagen que está buscando.
+          </p>
+          <p>
+            Nuestro salón es reconocido por sus especialistas con formación
+            profesional y calificada en el campo de la cosmética, peluquería y
+            barbería, dirigidos por el estilista Dorian Carbonell.
+          </p>
+          <p>
+            Proponemos colecciones diseñadas por Dorian Carbonell, con atrevidas
+            propuestas y estilos de cabello para cada época del año.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="servicios">
+    <a class="anchor_offset" id="servicios"></a>
+    <div class="container text-center mt-5 pt-5">
+      <h1 class="text-center font-weight-bold primary-text">
+        Nuestros Servicios
+      </h1>
+      <div class="row mt-3">
+        <article class="col-md-4 wow bounceInLeft" data-wow-delay=".3s">
+          <img src="assets/images/sitio/barberia_blanco.png" alt="Barbería" />
+          <h3 class="primary-text">
+            <a (click)="verServicios(1, 'Barbería', 'barberia_blanco.png')"
+              >Barbería
+            </a>
+          </h3>
+          <p class="">
+            Lorem ipsum dolor sit amet, dolore eiusmod quis tempor incididunt ut
+            et dolore Ut veniam unde voluptatem. Sed unde omnis iste natus error
+            sit voluptatem. Lorem ipsum dolor sit amet.
+          </p>
+          <a
+            (click)="verServicios(1, 'Barbería', 'barberia_blanco.png')"
+            class="btn btn-secondary"
+            >Más información</a
+          >
+        </article>
+        <article class="col-md-4 wow bounceInUp" data-wow-delay=".4.5s">
+          <img
+            src="assets/images/sitio/peluqueria_blanco.png"
+            alt="peluquería"
+          />
+          <h3>
+            <a (click)="verServicios(2, 'Peluquería', 'peluqueria_blanco.png')"
+              >Peluquería</a
+            >
+          </h3>
+          <p class="item-box-blog-text">
+            Lorem ipsum dolor sit amet, dolore eiusmod quis tempor incididunt ut
+            et dolore Ut veniam unde voluptatem. Sed unde omnis iste natus error
+            sit voluptatem. Lorem ipsum dolor sit amet.
+          </p>
+          <a
+            (click)="verServicios(2, 'Peluquería', 'peluqueria_blanco.png')"
+            class="btn btn-secondary"
+            >Más información</a
+          >
+        </article>
+        <article class="col-md-4 wow bounceInUp" data-wow-delay=".6s">
+          <img
+            src="assets/images/sitio/manicure_blanco.png"
+            alt="Manicure y Pedicure"
+          />
+          <h3>
+            <a
+              (click)="
+                verServicios(3, 'Manicure y Pedicure', 'manicure_blanco.png')
+              "
+              >Manicure y Pedicure</a
+            >
+          </h3>
+          <p class="">
+            Lorem ipsum dolor sit amet, dolore eiusmod quis tempor incididunt ut
+            et dolore Ut veniam unde voluptatem. Sed unde omnis iste natus error
+            sit voluptatem. Lorem ipsum dolor sit amet.
+          </p>
+          <a
+            (click)="
+              verServicios(3, 'Manicure y Pedicure', 'manicure_blanco.png')
+            "
+            class="btn btn-secondary"
+            >Más información</a
+          >
+        </article>
+        <article class="col-md-4 wow bounceInRight" data-wow-delay="1s">
+          <img
+            src="assets/images/sitio/maquillaje_blanco.png"
+            alt="Maquillaje"
+          />
+          <h3>
+            <a (click)="verServicios(4, 'Maquillaje', 'maquillaje_blanco.png')"
+              >Maquillaje</a
+            >
+          </h3>
+          <p class="">
+            Lorem ipsum dolor sit amet, dolore eiusmod quis tempor incididunt ut
+            et dolore Ut veniam unde voluptatem. Sed unde omnis iste natus error
+            sit voluptatem. Lorem ipsum dolor sit amet.
+          </p>
+          <a
+            (click)="verServicios(4, 'Maquillaje', 'maquillaje_blanco.png')"
+            class="btn btn-secondary"
+            >Más información</a
+          >
+        </article>
+        <article class="col-md-4 wow bounceInLeft" data-wow-delay="1s">
+          <img
+            src="assets/images/sitio/tratamientoFacial_blanco.png"
+            alt="Tratamientos faciales"
+          />
+          <h3>
+            <a
+              (click)="
+                verServicios(
+                  5,
+                  'Tratamientos faciales',
+                  'tratamientoFacial_blanco.png'
+                )
+              "
+              >Tratamientos faciales</a
+            >
+          </h3>
+          <p class="">
+            Lorem ipsum dolor sit amet, dolore eiusmod quis tempor incididunt ut
+            et dolore Ut veniam unde voluptatem. Sed unde omnis iste natus error
+            sit voluptatem. Lorem ipsum dolor sit amet.
+          </p>
+          <a
+            (click)="
+              verServicios(
+                5,
+                'Tratamientos faciales',
+                'tratamientoFacial_blanco.png'
+              )
+            "
+            class="btn btn-secondary"
+            >Más información</a
+          >
+        </article>
+        <article class="col-md-4 wow bounceInRight" data-wow-delay="1.1s">
+          <img
+            src="assets/images/sitio/tattoo_blanco.png"
+            alt="Asistencia en audiovisuales"
+          />
+          <h3>
+            <a
+              (click)="
+                verServicios(
+                  6,
+                  'Asistencia en audiovisuales',
+                  'audiovisuales_blanco.png'
+                )
+              "
+              >Tatuajes</a
+            >
+          </h3>
+          <p class="">
+            Ofrecemos servicios de asistencia y dirección de estilo en la
+            realización de audiovisuales, videoclips y sesiones fotográficas.
+          </p>
+          <a
+            (click)="
+              verServicios(
+                6,
+                'Asistencia en audiovisuales',
+                'tattoo_blanco.png'
+              )
+            "
+            class="btn btn-secondary"
+            >Más información</a
+          >
+        </article>
+      </div>
+    </div>
+  </section>
+  <!--Blog-->
+  <section class="blog">
+    <a class="anchor_offset" id="blog"></a>
+    <div class="container mt-5">
+      <h1 class="text-center font-weight-bold primary-text">Mi Blog</h1>
+      <!-- Carrusel de Noticias -->
+      <owl-carousel-o [options]="customOptions1">
+        <ng-template carouselSlide *ngFor="let item of this.arregloDeArreglos">
+          <div class="row">
+            <div class="col-12 col-md-4" *ngFor="let publicacion of item">
+              <div class="item-box-blog">
+                <div class="item-box-blog-image">
+                  <!--Date-->
+                  <div class="item-box-blog-date bg-blue-ui white">
+                    <span class="mon">{{ publicacion.fecha | date }}</span>
+                  </div>
+                  <!--Image-->
+                  <figure>
+                    <img
+                      alt=""
+                      src="{{
+                        concatImageUrl(
+                          'publicacion',
+                          publicacion.id,
+                          publicacion.imagenDestacada
+                        )
+                      }}"
+                    />
+                  </figure>
+                </div>
+                <div class="item-box-blog-body">
+                  <!--Heading-->
+                  <div class="item-box-blog-heading">
+                    <a
+                      href="blog.html"
+                      tabindex="0"
+                      class="primary-text titulo-evento"
+                    >
+                      <h5>{{ publicacion.titulo }}</h5>
+                    </a>
+                  </div>
+                  <!--Data-->
+                  <div class="item-box-blog-data">
+                    <p class="primary-text">
+                      <i class="fa fa-user"></i>
+                      {{ publicacion.publicadaPor.nombre }},
+                      <i class="fa fa-comments"></i> Comentarios({{
+                        publicacion.comentarios.length
+                      }})
+                    </p>
+                  </div>
+                  <!--Text-->
+                  <div class="item-box-blog-text">
+                    <div innerHTML="{{ publicacion.body }}"></div>
+                  </div>
+                  <div class="mt">
+                    <a
+                      routerLink="{{ 'articulos/' + publicacion.id }}"
+                      tabindex="0"
+                      class="btn bg-blue-ui white read"
+                      >Leer Más</a
+                    >
+                  </div>
+                  <!--Read More Button-->
+                </div>
+              </div>
+            </div>
+          </div>
+        </ng-template>
+      </owl-carousel-o>
+    </div>
+  </section>
+  <!--Galeria-->
+  <section class="galeria">
+    <a class="anchor_offset" id="galeria"></a>
+    <div class="container mt-5">
+      <h1 class="text-center font-weight-bold primary-text">Galerías</h1>
+      <div class="row mt-3">
+        <div class="col-md-4" *ngFor="let galeria of this.galerias">
+          <div class="card tarjetaGaleria">
+            <a routerLink="{{ 'galerias/' + galeria.id }}">
+              <img
+                src="{{
+                  this.concatImageUrl(
+                    'galeria',
+                    galeria.id,
+                    galeria.imagenPortada
+                  )
+                }}"
+                class="img-thumbnail"
+              />
+              <div class="card-img-overlay card-text text-center">
+                <h4>{{ galeria.nombre }}</h4>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="eventos">
+    <a class="anchor_offset" id="eventos"></a>
+    <div class="container mt-5">
+      <h1 class="text-center font-weight-bold primary-text my-3">Eventos</h1>
+      <owl-carousel-o [options]="customOptions">
+        <ng-template carouselSlide *ngFor="let evento of this.eventos">
+          <div class="card">
+            <img
+              class="card-img-top"
+              src="{{ this.concatImageUrl('evento', evento.id, evento.foto) }}"
+              alt="img"
+            />
+            <div class="card-body">
+              <p class="titulo-evento">{{ evento.nombre }}</p>
+              <div class="mt-1">
+                <span> Fecha Inicio:</span> {{ evento.fechaInicio | date }}
+                <br />
+                <span>Fecha Fin:</span>
+                {{ !evento.fechaFin ? "--" : (evento.fechaFin | date) }} <br />
+                Ubicación: {{ evento.lugar }}
+              </div>
+              <div class="text-right">
+                <a routerLink="{{ 'eventos/' + evento.id }}"
+                  ><em>Leer Más</em></a
+                >
+              </div>
+            </div>
+          </div>
+        </ng-template>
+      </owl-carousel-o>
+    </div>
+  </section>
+  <app-web-footer (reservarEvent)="this.abrirModalLoginCliente()">
+  </app-web-footer>
+</div>
+<a class="ir-arriba flechita" (click)="scrollUp()"
+  ><i class="fa fa-arrow-circle-up" aria-hidden="true"> </i
+></a>

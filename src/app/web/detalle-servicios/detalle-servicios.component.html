@@ -1,0 +1,33 @@
+<div class="modal-servicios">
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">
+      <img class="imagenCategoria" src="assets/images/sitio/{{this.datosEnviados.nombreImagenCategoria}}" alt="Asistencia en audiovisuales">
+      Servicios de {{this.datosEnviados.nombreCategoria}}</h4>
+    <button type="button" class="close" aria-label="Close" tabIndex=-1 (click)="cerrar()">
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="row filaServicios">
+      <div class="col-md-12">
+        <ul class="list-unstyled">
+          <li class="media mb-4" *ngFor="let servicio of this.servicios" >
+            <img src="{{servicio.avatar | imagen:'servicio':servicio.id}}" class="mr-3 avatarServicio" alt="...">
+            <div class="media-body">
+              <div class="row">
+                <div class="col-10">
+                  <h5 class="mt-0 mb-1 text-primary">{{servicio.nombre}}</h5>
+                  {{servicio.descripcion}}
+                </div>
+              </div>
+              <hr>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+

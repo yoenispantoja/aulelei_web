@@ -1,0 +1,53 @@
+<div [@routerTransition]>
+    <app-page-header [heading]="'Editar galería'" [icon]="'fa-pencil-square'"></app-page-header>
+    <!-- Formly -->
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div class="row">
+            <div class="col-md-8">
+                <formly-form [form]="form" [fields]="fields" [model]="model"></formly-form>
+            </div>
+            <div class="col-md-4 clsImagenDestacada">
+                <div class="form-group">
+                    <label for="" class="text-primary">Imagen de portada:</label>
+                    <div class="image-upload">
+                        <label for="fileImagenDestacada">
+            <img [src]="imgSrc" height="120px" />
+          </label>
+                        <input id="fileImagenDestacada" formControlName="imagenPortada" type="file" capture="camera" accept="image/*" (change)="loadImage($event)" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="divGaleria">
+                    <div class="containerFotos row">
+                        <div *ngFor="let image of archivosMostrar" class="col-3 boxImage fotosGaleria">
+                            <img class="" src="{{ image.src }}" />
+                            <button type="button" class="btn btn-danger btn-sm" (click)="eliminarImagen(image.id, image.tipo)"><i class="fa fa-trash" aria-hidden="true"></i> Eliminar</button>
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-primary" (click)="fileInput.click()">
+          <i class="fa fa-photo"></i> Cargar más fotos
+        </button>
+                    <input hidden #fileInput type="file" (change)="onSelectFile($event)" multiple accept="image/*" />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <button type="submit" class="btn btn-primary float-right" [disabled]="form.invalid">
+        <i class="fa fa-save"></i> Actualizar
+      </button>
+            </div>
+        </div>
+    </form>
+</div>
+<br /><br />
+
+<swal #confirmSwal title="Información" text="La galería ha sido actualizada" type="success" [showCancelButton]="false" [focusCancel]="true" (confirm)="cerrarVentana()">
+</swal>
+
+<swal #notFoundSwal title="Información" text="No existe galería registrada con ese identificador" type="error" [showCancelButton]="false"
+  (confirm)="cerrarVentana()">
+</swal>

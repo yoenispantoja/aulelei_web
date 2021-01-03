@@ -1,0 +1,166 @@
+<div class="sitio paginas-internas">
+  <section class="bienvenidos">
+    <div class="texto-encabezado text-center">
+      <div class="container">
+        <h1 class="display-4 wow bounceIn">Reservar</h1>
+      </div>
+    </div>
+  </section>
+  <section class="ruta py-3">
+    <div class="container">
+      <div class="text-right">
+        <div class="col-xs-12"><a href="/">Inicio</a> » Reservar</div>
+      </div>
+    </div>
+  </section>
+  <div class="container py-3">
+    <form [formGroup]="form" (ngSubmit)="reservar()">
+      <aw-wizard [navBarLayout]="'large-filled-symbols'">
+        <aw-wizard-step stepTitle="Datos personales">
+          <ng-template awWizardStepSymbol><i class="fa fa-user"></i></ng-template>
+          <div class="container">
+            <div class="row justify-content-center bodyWizard">
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label>Nombre y apellidos:</label>
+                  <input formControlName="nombre_completo" class="form-control" type="text" />
+                </div>
+                <div class="form-group">
+                  <label>Correo electrónico:</label>
+                  <input formControlName="email" class="form-control" type="email" />
+                </div>
+                <div class="form-group">
+                  <label>Teléfono para contacto:</label>
+                  <input formControlName="telefono" class="form-control" type="number" required
+                    placeholder="Teléfono para contacto" />
+                </div>
+              </div>
+            </div>
+            <div class="row text-center">
+              <div class="col-md-12 botonesWizard">
+                <button type="button" class="btn btn-primary" [disabled]="this.form.get('telefono').invalid" awNextStep>
+                  Siguiente
+                </button>
+              </div>
+            </div>
+          </div>
+        </aw-wizard-step>
+        <aw-wizard-step stepTitle="Servicio">
+          <ng-template awWizardStepSymbol><i class="fa fa-cut"></i></ng-template>
+          <div class="container">
+            <div class="row justify-content-center bodyWizard">
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label>Tipo de servicio:</label>
+                  <select formControlName="categoriaServicio" class="form-control"
+                    (change)="seleccionarCategoria($event.target.value)">
+                    <option value="" [selected]="true" [disabled]="true">Seleccione...</option>
+                    <option *ngFor="let categoria of categorias" [value]="categoria.id">{{ categoria.nombre }}</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label>Servicio:</label>
+                  <select formControlName="servicio" class="form-control"
+                    (change)="seleccionarServicio($event.target.value)">
+                    <option value="" [selected]="true" [disabled]="true">Seleccione...</option>
+                    <option *ngFor="let servicio of servicios" [value]="servicio.id">{{ servicio.nombre }}</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="row text-center">
+              <div class="col-md-12 botonesWizard">
+                <button type="button" class="btn btn-primary" awPreviousStep>
+                  Volver
+                </button>
+                <button type="button" class="btn btn-primary" [disabled]="this.form.get('servicio').invalid" awNextStep>
+                  Siguiente
+                </button>
+              </div>
+            </div>
+          </div>
+        </aw-wizard-step>
+        <aw-wizard-step stepTitle="Estilista">
+          <ng-template awWizardStepSymbol><i class="fa fa-hands"></i></ng-template>
+          <div class="container">
+            <div class="row text-center bodyWizard">
+              <div class="col-md-12">
+                <h4>Seleccione estilista:</h4>
+                <div class="row filasTarjetas">
+                  <div class="col-md-4" *ngFor="let estilista of estilistas">
+                    <div class="tarjetaEstilista" awNextStep (click)="seleccionarEstilista(estilista.id)">
+                      <img class="imagenEstilista" src="{{
+                          estilista.usuario.img
+                            | imagen: 'usuario':estilista.usuario.id
+                        }}" />
+                      <div class="tarjetaDerecha">
+                        <p class="nombreEstilista">
+                          {{ estilista.nombre_completo }}
+                        </p>
+                        <p class="descripcionEstilista">
+                          Rating:
+                          <span><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star"
+                              aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star"
+                              aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i></span>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row text-center">
+              <div class="col-md-12 botonesWizard">
+                <button type="button" class="btn btn-primary" awPreviousStep>
+                  Volver
+                </button>
+              </div>
+            </div>
+          </div>
+        </aw-wizard-step>
+        <aw-wizard-step stepTitle="Fecha y hora">
+          <ng-template awWizardStepSymbol><i class="fa fa-calendar"></i></ng-template>
+          <div class="container">
+            <div class="row justify-content-center bodyWizard">
+              <div class="col-md-8">
+                <label>Agenda del estilista seleccionado:</label>
+                <ejs-schedule #schedule [readonly]="true" currentView="Month" [eventSettings]="eventSettings">
+                  <e-views>
+                    <e-view option="Week" startHour="11:00" endHour="00:00" [timeScale]="timeScaleOptions"></e-view>
+                    <e-view option="Month" startHour="11:00" endHour="00:00" [timeScale]="timeScaleOptions"></e-view>
+                  </e-views>
+                </ejs-schedule>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label>Fecha:</label>
+                  <ejs-datepicker id="datepicker" placeholder="Seleccione fecha" [(value)]='fechaReserva' [min]="minDate" ></ejs-datepicker>
+                </div>
+                <div class="form-group">
+                  <label>Hora:</label>
+                  <ejs-timepicker id="timepicker" [(value)]="horaReserva" [min]="minValue" [max]="maxValue" [step]='interval'></ejs-timepicker>
+                </div>
+                <br>
+                <div class="row text-center">
+                  <div class="col-md-12 botonesWizard">
+                    <button type="button" class="btn btn-primary" awPreviousStep>
+                      Volver
+                    </button>
+                    <button type="button" class="btn btn-primary" [disabled]="!hayFechaSeleccionada()" type="submit">
+                      Reservar
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </aw-wizard-step>
+      </aw-wizard>
+    </form>
+    <br /><br />
+  </div>
+<swal #errorSwal title="Información" text="No hay disponibilidad en la fecha y hora solicitada. Por favor, intente para otro período" type="error" [showCancelButton]="false"
+[focusCancel]="true">
+</swal>
+  <app-web-footer></app-web-footer>
+</div>

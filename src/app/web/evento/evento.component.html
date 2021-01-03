@@ -1,0 +1,40 @@
+<div class="sitio paginas-internas">
+<section class="bienvenidos">
+  <div class="texto-encabezado text-center">
+      <div class="container">
+          <h1 class="display-4 wow bounceIn">Eventos</h1>
+      </div>
+  </div>
+</section>
+<section class="ruta py-3">
+  <div class="container">
+      <div class="text-right">
+          <div class="col-xs-12 ">
+              <a href="/">Inicio</a> » Eventos
+          </div>
+      </div>
+  </div>
+</section>
+<div class="container py-3">
+  <h4 class="primary-text">{{this.evento?.nombre}}</h4>
+  <div class="row">
+    <div class="col-md-4">
+      <span><i class="fa fa-map-marker" aria-hidden="true"></i> Lugar: {{this.evento?.lugar}}</span>
+    </div>
+    <div class="col-md-4">
+      <span><i class="fa fa-calendar" aria-hidden="true"></i> Fecha inicio: {{this.evento?.fechaInicio | date}}</span>
+    </div>
+    <div class="col-md-4">
+      <span><i class="fa fa-calendar" aria-hidden="true"></i> Fecha fin: {{!this.evento?.fechaFin==null?'--':this.evento?.fechaFin | date}}</span>
+    </div>
+  </div>
+  <br>
+  <div class="row">
+      <div class="col-md-8" [innerHTML]="this.evento?.descripcion"></div>
+      <div class="col-md-4">
+          <img src="{{this.fotoPortada}}" alt="" width="100%" class="img-fluid mx-auto mt-2">
+      </div>
+  </div>
+</div>
+<app-web-footer></app-web-footer>
+</div>

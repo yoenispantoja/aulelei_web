@@ -1,0 +1,133 @@
+<div [@routerTransition]>
+    <app-page-header [heading]="'Editar publicación'" [icon]="'fa-pencil-square'"></app-page-header>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div class="row">
+            <div class="col-9">
+                <div class="card">
+                    <div class="card-header">
+                        <strong><i class="fa fa-list"></i> Generales</strong>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label for="" class="text-primary">Título:</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text text-primary" id="addon-wrapping">T</span>
+                                </div>
+                                <input type="text" formControlName="titulo" class="form-control" placeholder="Titulo" aria-describedby="helpId">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="text-primary">Contenido:</label>
+                            <editor [formControlName]="'body'" id="twiny" [init]="getInitData()" apiKey="voodxvn25tlrviree2bqwnao599n8buydbimqiv1tcoo8okn" initialValue="<p>Initial content of the editor</p>">
+                            </editor>
+                        </div>
+                    </div>
+                </div>
+                <!-- Panel del SEO -->
+                <div class="card">
+                    <div class="card-header">
+                        <strong><i class="fa fa-cube"></i> SEO</strong>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label class="text-primary" for="description">Meta Descripción:</label>
+                                    <textarea name="description" (ngModelChange)="contarCaracteresDescripcion()" formControlName="meta_descripcion" class="form-control" id="description" rows="3" maxlength="160"></textarea>
+                                    <p class="help-block"><span id="description-counter">{{contadorLetrasDescripcion}}</span>/160</p>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label class="text-primary" for="keywords">Palabras Clave:</label>
+                                    <textarea name="palabrasClave" class="form-control" id="palabrasClave" rows="3" maxlength="80" formControlName="palabras_clave"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.panel -->
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="card">
+                    <div class="card-header">
+                        <strong><i class="fa fa-tools"></i> Configuración</strong>
+                    </div>
+                    <div class="card-body">
+                        <!-- Campo fecha -->
+                        <div class="form-group">
+                            <label for="" class="text-primary">Fecha a publicar:</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text text-primary" id="addon-wrapping"><i
+                                            class="fa fa-calendar" aria-hidden="true"></i></span>
+                                </div>
+                                <input type="date" formControlName="fecha" class="form-control" placeholder="Fecha" aria-describedby="helpId">
+                            </div>
+                        </div>
+                        <!-- Campo estado -->
+                        <div class="form-group">
+                            <label for="" class="text-primary">Estado:</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text text-primary" id="addon-wrapping"><i
+                                            class="fa fa-filter" aria-hidden="true"></i></span>
+                                </div>
+                                <select class="form-control" formControlName="estado">
+                                    <option value="" selected disabled>Seleccione</option>
+                                    <option *ngFor="let estado of this.estados_publicacion" value="{{estado.key}}">
+                                        {{estado.value}}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <!-- Campo categoria -->
+                        <div class="form-group">
+                            <label for="" class="text-primary">Categoría:</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text text-primary" id="addon-wrapping"><i
+                                            class="fa fa-filter" aria-hidden="true"></i></span>
+                                </div>
+                                <select class="form-control" formControlName="categoria">
+                                    <option value="" selected disabled>Seleccione</option>
+                                    <option *ngFor="let categoria of this.categorias_publicacion"
+                                        value="{{categoria.key}}">{{categoria.value}}
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                        <hr>
+                        <button type="submit" class="btn btn-primary" [disabled]="form.invalid"><i
+                                class="fa fa-save"></i>
+                            Actualizar</button>
+                    </div>
+                </div>
+                <br>
+                <!-- Panel de la imagen destacada -->
+                <div class="card">
+                    <div class="card-header">
+                        <strong><i class="fa fa-image"></i> Imagen destacada</strong>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <div class="image-upload">
+                                <label for="fileImagenDestacada">
+                                    <img [src]="imgSrc" width="180px" />
+                                </label>
+                                <input id="fileImagenDestacada" formControlName="imagenDestacada" type="file" capture="camera" accept="image/*" (change)="loadImage($event)" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<swal #confirmSwal title="Información" text="La publicación ha sido actualizada" type="success" [showCancelButton]="false" [focusCancel]="true" (confirm)="cerrarVentana()">
+</swal>
+
+<swal #notFoundSwal title="Información" text="No existe publicación registrada con ese identificador" type="error" [showCancelButton]="false"
+  (confirm)="cerrarVentana()">
+</swal>

@@ -1,0 +1,28 @@
+<div class="modal-galeria">
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title"><i class="fa fa-images"></i> {{this.galeria.nombre}}</h4>
+        <button type="button" class="close" aria-label="Close" tabIndex=-1 (click)="cerrar()">
+    <span aria-hidden="true">×</span>
+  </button>
+    </div>
+    <div class="modal-body">
+        <article class="post">
+            <div class="post-info row">
+                <span class="post-author col-4"><strong> <i class="fa fa-images"></i> Categoría:</strong> {{this.galeria.categoria.nombre}}</span>
+                <span class="post-author col-4"><strong> <i class="fa fa-user"></i> Publicada por:</strong> {{this.galeria.publicadaPor.nombre}}</span>
+                <span class="post-date col-4"><strong><i class="fa fa-check-circle"></i> Estado:</strong> {{this.galeria.estado.nombre }}</span>
+            </div>
+            <hr>
+            <div class="post-media text-center row">
+                <div *ngFor="let image of this.fotosGaleria; let i=index" class="col-4">
+                    <img [src]="image.thumb" (click)="open(i)" width="250px" class="img-portada img-thumbnail" />
+                    <br/>
+                </div>
+            </div>
+        </article>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" (click)="cerrar()">Cerrar</button>
+    </div>
+
+</div>

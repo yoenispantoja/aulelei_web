@@ -1,0 +1,104 @@
+<div [@routerTransition]>
+  <div class="titlePage">
+    <app-page-header [heading]="'Reservaciones'" [icon]="'fa-pencil-square'"></app-page-header>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <p class="text-center tituloSeleccion">
+        Seleccione estilista para ver su agenda:
+      </p>
+      <owl-carousel-o [options]="customOptions" *ngIf="this.estilistas.length>0">
+        <ng-template carouselSlide *ngFor="let estilista of this.estilistas">
+          <div class="tarjetaEstilista" (click)="verReservasEstilista(estilista.id)">
+            <img class="imagenEstilista" src="{{
+                estilista.usuario.img | imagen: 'usuario':estilista.usuario.id
+              }}" />
+            <p class="nombreEstilista" ngClass="{{ this.estaSeleccionado(estilista.id) }}">
+              {{ estilista.nombre_completo }}
+            </p>
+          </div>
+        </ng-template>
+      </owl-carousel-o>
+      <br />
+      <ejs-schedule #schedule id="schedule" currentView="Month" [eventSettings]="eventSettings" title="Doble clic para nueva reserva"
+        (cellDoubleClick)="nuevoEvento($event)" (cellClick)="enableClick($event)" (actionBegin)="onActionBegin($event)"
+        (eventClick)="clickAlEvento($event)">
+        <e-views>
+          <e-view option="Week" startHour="09:00" endHour="18:00" [timeScale]="timeScaleOptions"></e-view>
+          <e-view option="Month" startHour="09:00" endHour="18:00" [timeScale]="timeScaleOptions"></e-view>
+        </e-views>
+        <!-- Formulario de edición e inserción -->
+        <ng-template #editorTemplate let-data>
+          <br />
+          <table *ngIf="data" class="custom-event-editor" width="100%" cellpadding="5">
+            <tbody class="bodyTable">
+              <tr>
+                <td class="e-textlabel"><strong>Estilista:</strong></td>
+                <td colspan="4">
+                  <span *ngIf="this.estilistas.length>0">
+                    {{
+                      this.getNombreEstilista()
+                    }}</span>
+                </td>
+              </tr>
+              <tr>
+                <td class="e-textlabel"><strong>Cliente:</strong></td>
+                <td colspan="4">
+                  <ejs-autocomplete id="clientes" #autoCompleteCliente [dataSource]="this.clientes"
+                    [(value)]="clienteSeleccionado" [placeholder]="waterMark" [fields]="fieldsClientes"
+                    (change)="seleccionarCliente($event)" [enabled]="this.allowEditCliente">
+                    <ng-template #itemTemplate let-data>
+                      <div>
+                        <img class="empImage" src="{{ data.img | imagen: 'usuario':data.id }}" alt="cliente" />
+                        <div class="ename">{{ data.nombre }}</div>
+                        <div class="job">{{ data.email }}</div>
+                      </div>
+                    </ng-template>
+                  </ejs-autocomplete>
+                </td>
+              </tr>
+              <tr>
+                <td class="e-textlabel"><strong>Teléfono:</strong></td>
+                <td colspan="4">
+                  <input class="e-input" type="text" placeholder="Teléfono para contacto" [(ngModel)]='telefono' [disabled]="!this.allowEditTelefono" />
+                </td>
+              </tr>
+              <tr>
+                <td class="e-textlabel"><strong>Servicio:</strong></td>
+                <td colspan="4">
+                  <ejs-autocomplete id="servicios" #autoCompleteServicio [dataSource]="this.servicios"
+                    [(value)]="servicioSeleccionado" [placeholder]="waterMarkServicios" [fields]="fieldsServicios"
+                    (change)="seleccionarServicio($event)" [enabled]="this.allowEditServicio">
+                    <ng-template #itemTemplate let-data>
+                      <div>
+                        <img class="empImage" src="{{ data.avatar | imagen: 'servicio':data.id }}" alt="servicio" />
+                        <div class="ename">{{ data.nombre }}</div>
+                        <div class="job">{{ data.categoria.nombre }}</div>
+                      </div>
+                    </ng-template>
+                  </ejs-autocomplete>
+                </td>
+              </tr>
+              <tr>
+                <td class="e-textlabel"><strong>Fecha:</strong></td>
+                <td colspan="2">
+                  <ejs-datepicker #datepicker [enabled]="this.allowEditFecha" placeholder="Seleccione fecha"
+                    [(value)]="fechaReserva" [min]="minDate"></ejs-datepicker>
+                </td>
+                <td class="e-textlabel"><strong>Hora:</strong></td>
+                <td colspan="2">
+                  <ejs-timepicker id="timepicker" [(value)]="horaReserva" [min]="minValue" [max]="maxValue"
+                    [step]="interval"></ejs-timepicker>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </ng-template>
+      </ejs-schedule>
+    </div>
+  </div>
+  <br /><br /><br />
+  <swal #successSwal title="Información" text="La reserva ha sido eliminada" type="success" [showCancelButton]="false"
+    [focusCancel]="true">
+  </swal>
+</div>

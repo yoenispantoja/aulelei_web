@@ -1,0 +1,61 @@
+@font-face {
+  font-family: "ATRotisSansSerif";
+  src: url("../../../assets/fonts/ATRotisSansSerif/atrss__0.TTF") format("truetype");
+}
+
+.modal-servicios {
+  font-family: 'ATRotisSansSerif', "Open Sans"!important;
+  border:2px solid #fea151;
+  border-radius: 0.3rem;
+}
+
+.modal-header {
+  background-color: #1D1D1D;
+  color: #fff;
+  border-bottom:2px solid #fea151;
+}
+
+.modal-title{
+  color: #fea151;
+}
+
+.close span {
+  color: #fff;
+  margin-top: 40%;
+}
+
+.divBody {
+  margin: 20px 0;
+}
+
+.btn-primary {
+  color: #FFF;
+  background-color: #FEA151;
+  border-color: transparent;
+  transition: all 0.5s ease 0s;
+}
+
+.imagenCategoria{
+  background-color: #000;
+  width: 50px;
+  height: 50px;
+  margin-right: 15px;
+  padding: 10px;
+  border: 2px solid #fea151;
+  border-radius: 50%;
+}
+
+.avatarServicio{
+  width: 72px;
+  height: 72px;
+  object-fit: cover;
+}
+
+.filaServicios{
+  max-height: 600px;
+  overflow-y: auto;
+}
+
+
+
+

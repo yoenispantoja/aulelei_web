@@ -1,0 +1,10 @@
+.titlePage {
+  display: grid;
+  grid-template-columns: auto auto;
+  justify-content: space-between;
+
+  .linkAdicionar {
+    height: 32px;
+    width: 150px;
+  }
+}

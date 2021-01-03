@@ -1,0 +1,16 @@
+<div [@routerTransition]>
+  <div class="titlePage">
+    <app-page-header [heading]="'Listado de usuarios'" [icon]="'fa-pencil-square'"></app-page-header>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <dymtabla [nombresColumnas]="nombresColumnas" [urlApi]="urlApi" [tituloReporte]="'Listado de usuarios'"
+        [columnasData]="columnasData" (verDetallesClick)="verDetallesUsuario($event)"
+        (editarClick)="editarUsuario($event)" (eliminarClick)="eliminarUsuario($event)"></dymtabla>
+    </div>
+  </div>
+  <br />
+  <swal #successSwal title="Información" text="Registro eliminado" type="success" [showCancelButton]="false"
+    [focusCancel]="true">
+  </swal>
+</div>

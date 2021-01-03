@@ -1,0 +1,26 @@
+.post {
+  height: 400px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.post-info {
+  margin-bottom: 20px;
+}
+
+.img-portada {
+  cursor: pointer;
+}
+
+.modal-header {
+  background-color: #1D1D1D;
+  color: #fff;
+}
+
+.close span {
+  color: #fff;
+}
+
+.divBody {
+  margin: 20px 0;
+}

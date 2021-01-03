@@ -1,0 +1,32 @@
+<div class="sitio paginas-internas">
+  <section class="bienvenidos">
+    <div class="texto-encabezado text-center">
+        <div class="container">
+            <h1 class="display-4 wow bounceIn">Galería</h1>
+        </div>
+    </div>
+</section>
+<section class="ruta py-3">
+    <div class="container">
+        <div class="text-right">
+            <div class="col-xs-12">
+                <a href="/">Inicio</a> » {{this.galeria?.nombre}}
+            </div>
+        </div>
+    </div>
+</section>
+<div class="py-1">
+    <div class="container gallery-container">
+        <h1 class="text-xs-center font-weight-bold primary-text">{{this.galeria?.nombre}}</h1>
+        <div class="tz-gallery">
+            <div class="row">
+              <div *ngFor="let image of this.fotosGaleria; let i=index" class="col-4">
+                <img [src]="image.thumb" (click)="open(i)" width="250px" class="img-portada" />
+                <br/><br>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+<app-web-footer></app-web-footer>
+</div>

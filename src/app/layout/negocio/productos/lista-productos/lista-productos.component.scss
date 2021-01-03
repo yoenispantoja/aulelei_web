@@ -1,0 +1,75 @@
+@font-face {
+  font-family: "ATRotisSansSerif";
+  src: url("../../../../../assets/fonts/ATRotisSansSerif/atrss__0.TTF") format("truetype");
+}
+
+.titlePage {
+  display: grid;
+  grid-template-columns: auto auto;
+  justify-content: space-between;
+
+  .linkAdicionar {
+    height: 32px;
+    width: 150px;
+  }
+}
+
+.avatarProducto{
+  width: 72px;
+  height: 72px;
+  object-fit: cover;
+}
+
+.precio{
+  font-size: 16px;
+  margin-right: 8px;
+}
+
+#list-tab{
+  font-family: 'ATRotisSansSerif', "Open Sans"!important;
+  font-size: 18px;
+}
+
+.botonesAccion {
+  margin-right: 8px;
+  i{
+    margin-left: 4px;
+  }
+
+  i:hover{
+    cursor: pointer;
+    transform: rotate(-6deg);
+  }
+}
+
+
+.avatarCategoria {
+  margin-left: -20px !important;
+}
+
+
+::ng-deep ngb-accordion{
+
+  .btn-link{
+    margin-bottom: 0;
+    background-color: transparent;
+    color: #05124b;
+    text-decoration: none!important;
+    font-family: 'ATRotisSansSerif', "Open Sans"!important;
+    font-size: 18px;
+  }
+
+ .btn-link:hover{
+     color: #1039f3;
+     font-weight: bold;
+     text-decoration: none!important;
+  }
+
+
+}
+
+.lblCodigo{
+  font-size: 11px;
+  font-family: Tahoma;
+  color: #17A2B8;
+}

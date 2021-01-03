@@ -1,0 +1,62 @@
+<div class="modal-login-cliente">
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title"><i class="fa fa-calendar"></i> Reservar con mi cuenta</h4>
+    <button type="button" class="close" aria-label="Close" tabIndex=-1 (click)="cerrar()">
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="row">
+      <div class="col-md-12">
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+          <div class="form-group">
+            <label>Correo electrónico:</label>
+            <input formControlName="email" class="form-control" placeholder="Correo electrónico" type="email">
+          </div>
+          <div class="form-group">
+            <label>Contraseña:</label>
+            <input formControlName="password" class="form-control" placeholder="Contraseña" type="password">
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <label for="rememberme" id="lb_rememberme"><input name="rememberme" type="checkbox" id="rememberme"
+                  value="forever"> Recordarme</label>
+            </div>
+            <div class="col-md-6">
+              <a href="">Olvidé mi contraseña</a>
+            </div>
+          </div>
+          <br>
+          <div class="row">
+            <div class="col-md-8">
+              <span>No soy cliente, quiero <a href="#" (click)="irRegistro()">Registrarme</a> </span>
+            </div>
+            <div class="col-md-4">
+              <button class="btn btn-primary" [disabled]="form.invalid" type="submit"><i class="fa fa-sign-in-alt"></i>
+                Entrar</button>
+            </div>
+          </div>
+          <p></p>
+        </form>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <strong>O inicie sesión con sus redes sociales</strong>
+      </div>
+      <div class="col-md-6">
+        <google-login-button (socialUser)="getSocialUser($event)" [text]="'Con Google'"></google-login-button>
+      </div>
+      <div class="col-md-6">
+        <facebook-login-button (socialUser)="getSocialUser($event)" [text]="'Con Facebook'"></facebook-login-button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<swal #alertSwal title="Información" text="Credenciales incorrectas" type="error" [showCancelButton]="false"
+  [focusCancel]="true">
+</swal>
+
+<swal #alertSwal2 title="Información" text="El usuario no existe, por favor regístrese" type="error" [showCancelButton]="false" [focusCancel]="true">
+</swal>

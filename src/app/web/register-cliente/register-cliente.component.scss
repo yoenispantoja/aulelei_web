@@ -1,0 +1,45 @@
+@font-face {
+  font-family: "ATRotisSansSerif";
+  src: url("../../../assets/fonts/ATRotisSansSerif/atrss__0.TTF") format("truetype");
+}
+
+.modal-login-cliente {
+  font-family: 'ATRotisSansSerif', "Open Sans"!important;
+  border:2px solid #fea151;
+  border-radius: 0.3rem;
+}
+
+.modal-header {
+  background-color: #1D1D1D;
+  color: #fff;
+  border-bottom:2px solid #fea151;
+
+}
+
+.modal-title{
+  color: #fea151;
+}
+
+.close span {
+  color: #fff;
+}
+
+.divBody {
+  margin: 20px 0;
+}
+
+.btn-primary {
+  color: #FFF;
+  background-color: #FEA151;
+  border-color: transparent;
+  transition: all 0.5s ease 0s;
+}
+
+
+.error-messages{
+  font-size: 13px;
+  color: red;
+  padding-left: 2px;
+  margin-top: 2px;
+}
+

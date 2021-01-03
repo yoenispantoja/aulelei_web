@@ -1,0 +1,16 @@
+<div [@routerTransition]>
+    <div class="titlePage">
+        <app-page-header [heading]="'Listado de publicaciones'" [icon]="'fa-pencil-square'"></app-page-header>
+        <a routerLink="/admin/publicaciones/adicionar-publicaciones" [routerLinkActive]="['router-link-active']" class="btn btn-sm btn-primary linkAdicionar">
+            <i class=" fa fa-plus-circle"></i> Nueva publicación
+        </a>
+
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <dymtabla [nombresColumnas]="nombresColumnas" [urlApi]="urlApi" [tituloReporte]="'Listado de publicaciones'" [columnasData]="columnasData" (verDetallesClick)="verDetallesPublicacion($event)" (editarClick)="editarPublicacion($event)" (eliminarClick)="eliminarPublicacion($event)"></dymtabla>
+        </div>
+    </div>
+    <swal #successSwal title="Información" text="Registro eliminado" type="success" [showCancelButton]="false" [focusCancel]="true">
+    </swal>
+</div>

@@ -1,0 +1,110 @@
+<div class="sitio paginas-internas">
+<section class="bienvenidos">
+  <div class="texto-encabezado text-center">
+      <div class="container">
+          <h1 class="display-4 wow bounceIn">Blog</h1>
+      </div>
+  </div>
+</section>
+<section class="ruta py-3">
+  <div class="container">
+      <div class="text-right">
+          <div class="col-xs-12">
+              <a href="/">Inicio</a> » Blog
+          </div>
+      </div>
+  </div>
+</section>
+<section class="container py-3" style="padding-top:3rem;">
+  <div class="row">
+      <div class="col-md-8 blog-item">
+          <div class="row">
+              <div class="col-lg-12">
+                  <img alt=""src="{{this.fotoPortada}}" class="img-fluid m-x-auto m-t-2" style="width: 100%; height: 300px; object-fit: cover; margin-bottom: 10px;">
+                  <h4 class="primary-text m-t-2">{{publicacion?.titulo }}</h4>
+                    <div class="item-box-blog-data">
+                      <p class="primary-text ">
+                          <span>{{this.publicacion?.fecha | date}},</span>
+                          <span class="fa fa-user-o"></span> {{this.publicacion?.publicadaPor.nombre}},
+                          <i class="fa fa-comments-o"></i>
+                          Comentarios ({{this.comentarios.length}})</p>
+                  </div>
+                  <p [innerHTML]="this.publicacion?.body | safeHtml"> </p>
+              </div>
+          </div>
+          <br><br><br>
+          <!--Comentarios-->
+          <div class="row">
+              <div class="col-lg-12">
+                  <h2 class="primary-text pt-2">Comentarios</h2>
+                  <div class="sinComentarios" *ngIf="this.comentarios.length==0">
+                    No hay comentarios aún
+                  </div>
+                  <div class="comments">
+                      <div class="media" *ngFor="let comentario of this.comentarios">
+                          <div class="user mr-3">
+                              <i class="fa fa-user blog-user"></i>
+                          </div>
+                          <div class="media-body">
+                              <h4 class="media-heading">{{comentario.nombre}}<span>{{comentario.created_at | date}} </span></h4>
+                              <p>{{comentario.comentario}} </p>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <!--Deja un Comentario-->
+          <br><br><br>
+          <div class="row">
+              <div class="col-lg-12">
+                  <div class="post-comment pt-3">
+                      <h3 class="primary-text">Deja un comentario</h3>
+                      <form [formGroup]="form" (ngSubmit)="enviarComentario()">
+                          <div class="form-group">
+                              <label>Nombre <span class="color-red">*</span></label>
+                              <input formControlName="nombre" class="form-control"  type="text" required>
+                          </div>
+
+                          <div class="form-group">
+                              <label>Correo electrónico <span class="color-red">*</span></label>
+                              <input formControlName="email" class="form-control" type="email" required>
+                          </div>
+
+                          <div class="form-group">
+                              <label>Comentario <span class="color-red">*</span></label>
+                              <textarea class="form-control" rows="8" formControlName="comentario" class="form-control" required></textarea>
+                          </div>
+                          <p><button class="btn btn-primary" type="submit" [disabled]="this.form.invalid">Enviar comentario</button></p>
+                      </form>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="col-md-4">
+          <h2 class="primary-text pb-2">Noticias recientes</h2>
+          <div class="blog-posts">
+              <a routerLink="{{ '../'+publicacion.id }}" *ngFor="let publicacion of this.publicaciones?.slice(0,6)" >
+                  <div class="item d-flex align-items-center">
+                      <div class="image"><img src="{{urlfotoPortada(publicacion.id, publicacion.imagenDestacada)}}" alt="..." class="img-fluid"></div>
+                      <div class="title"><strong>{{publicacion.titulo}}</strong>
+                          <div class="d-flex align-items-center">
+                              <div class="date primary-text">{{publicacion.fecha | date}}</div>
+                              <div class="comments primary-text">Por: {{publicacion?.publicadaPor.nombre}}</div>
+                          </div>
+                      </div>
+                  </div>
+              </a>
+          </div>
+          <div  class="pt-3">
+              <form action="#" id="">
+                  <div class="contenedor-bloque-buscar">
+                      <input type="text" placeholder="Buscar noticia...">
+                      <input type="submit" value="Buscar">
+                  </div>
+              </form>
+          </div>
+      </div>
+  </div>
+</section>
+<app-web-footer></app-web-footer>
+</div>

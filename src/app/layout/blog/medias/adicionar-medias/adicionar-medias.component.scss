@@ -1,0 +1,46 @@
+.my-drop-zone {
+    color: #ccc;
+    border-style: dashed;
+    border-color: #ccc;
+    line-height: 150px;
+    text-align: center;
+    height: 150px;
+}
+
+.nv-file-over {
+    border: dotted 3px red;
+}
+
+
+/* Default class applied to drop zones on over */
+
+.another-file-over-class {
+    border: dotted 3px green;
+}
+
+.botonesGenerales {
+    text-align: right;
+    button {
+        margin: 5px;
+    }
+}
+
+.botonesFila {
+    button {
+        margin-right: 3px;
+    }
+}
+
+.imageTabla {
+    object-fit: cover;
+    width: 100px;
+    height: 60px;
+}
+
+.totalImagenes {
+    background-color: rgb(245, 242, 242);
+    border: 2px dashed rgb(158, 156, 156);
+    padding: 16px;
+    height: 100%;
+    width: 100%;
+}

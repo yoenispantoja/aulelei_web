@@ -1,0 +1,67 @@
+<div [@routerTransition]>
+  <div class="titlePage">
+    <app-page-header [heading]="'Listado de trabajadores'" [icon]="'fa-pencil-square'"></app-page-header>
+
+      <ejs-dropdownlist id="filtro" [dataSource]='this.rolesData'
+        [showClearButton]='true' (change)='filtrarTrabajador($event)' [fields]='this.camposFiltro'
+        placeholder='Selecciona una categoria' popupHeight='230px'>
+      </ejs-dropdownlist>
+      <a routerLink="/admin/trabajadores/adicionar-trabajadores" [routerLinkActive]="['router-link-active']"
+        class="btn btn-sm btn-primary linkAdicionar">
+        <i class=" fa fa-plus-circle"></i> Nuevo trabajador
+      </a>
+  </div>
+  <div class="row">
+    <div class="col-md-4" *ngFor="let trabajador of filtroTrabajadores" >
+      <div class="card-container">
+        <div class="card">
+          <div class="front">
+            <div class="cover">
+              <img src="../../../../../assets/images/fondo.jpg" />
+            </div>
+            <div class="user">
+              <img src="{{trabajador.usuario.img | imagen:'usuario':trabajador.usuario.id}}" alt="Avatar" />
+            </div>
+            <div class="content2">
+              <div class="main">
+                <h3 class="name">{{trabajador.nombre_completo}}</h3>
+                <p class="profession">{{trabajador.usuario.rol.nombre}}</p>
+                <p class="text-center"><i class="fa fa-phone" aria-hidden="true"></i> Teléfono: {{trabajador.telefono}}</p>
+                <p class="textHorario"><strong>Horario: {{trabajador.turno.nombre}}</strong></p>
+              </div>
+            </div>
+          </div>
+          <!-- end front panel -->
+          <div class="back">
+            <div class="header text-center">
+              <strong class="titleServices">Servicios que presta</strong>
+            </div>
+            <div class="content2 servicios">
+              <div class="main">
+                <ul class="list-group text-primary lista_servicios">
+                  <li class="list-group-item" *ngFor="let servicio of trabajador.servicios" >
+                    <span><i class="fa fa-cut" aria-hidden="true"></i>
+                      {{servicio.nombre}}
+                    </span>
+                  </li>
+                </ul>
+                <div class="botonesAccion">
+                  <i class="text-warning fa fa-edit" aria-hidden="true" title="Editar" (click)="editarTrabajador(trabajador.id)"></i> <i class="text-danger fa fa-trash" aria-hidden="true" title="Eliminar" (click)="eliminarTrabajador(trabajador.id)"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- end back panel -->
+        </div>
+      </div>
+    </div>
+  </div>
+  <swal #successSwal title="Información" text="Registro eliminado" type="success" [showCancelButton]="false"
+  [focusCancel]="true">
+</swal>
+<swal #warningSwal title="Información" text="¿Está seguro de eliminar el trabajador?" type="warning" [showCancelButton]="true"
+[focusCancel]="false" >
+</swal>
+
+
+</div>

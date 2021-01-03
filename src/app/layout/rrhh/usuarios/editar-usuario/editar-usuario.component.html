@@ -1,0 +1,40 @@
+<div [@routerTransition]>
+  <app-page-header [heading]="'Editar usuario'" [icon]="'fa-pencil-square'"></app-page-header>
+  <!-- Formly -->
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="row">
+      <div class="col-md-8">
+        <formly-form [form]="form" [fields]="fields" [options]="options" [model]="model"></formly-form>
+      </div>
+      <div class="col-md-4 clsAvatar">
+        <div class="form-group">
+          <div class="image-upload">
+            <label for="fileImagenDestacada">
+              <img [src]="imgSrc" *ngIf="imgSrc" class="clsAvatar" (click)="fileInput.click()"/>
+            </label>
+            <input id="fileAvatar" #fileInput formControlName="imagenUsuario" type="file" capture="camera"
+              accept="image/*" (change)="loadImage($event)" />
+          </div>
+        </div>
+      </div>
+    </div>
+    <br />
+    <hr />
+    <div class="row">
+      <div class="col-md-12">
+        <button type="submit" class="btn btn-primary float-right" [disabled]="form.invalid">
+          <i class="fa fa-save"></i> Actualizar
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
+<br /><br />
+
+<swal #confirmSwal title="Información" text="El usuario ha sido actualizado" type="success" [showCancelButton]="false"
+  [focusCancel]="true" (confirm)="cerrarVentana()">
+</swal>
+
+<swal #notFoundSwal title="Información" text="No existe usuario registrado con ese identificador" type="error"
+  [showCancelButton]="false" (confirm)="cerrarVentana()">
+</swal>

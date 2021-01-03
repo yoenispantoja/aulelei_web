@@ -1,0 +1,39 @@
+<div [@routerTransition]>
+  <app-page-header [heading]="'Nuevo evento'" [icon]="'fa-pencil-square'"></app-page-header>
+  <!-- Formly -->
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="row">
+      <div class="col-md-12">
+        <formly-form [form]="form" [fields]="fields" [options]="options" [model]="model"></formly-form>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-md-12 clsImagenDestacada">
+        <div class="form-group">
+          <div class="image-upload">
+            <label for="fileImagenDestacada">
+              <button type="button" class="btn btn-primary" (click)="fileInput.click()"> <i class="fa fa-image"></i> {{imgSrc?'Cambiar foto':'Cargar foto del evento'}}</button>
+              <img [src]="imgSrc" *ngIf="imgSrc" class="imagenPortada img-thumbnail"/>
+            </label>
+            <input id="fileImagenDestacada" #fileInput formControlName="imagenPortada" type="file" capture="camera"
+              accept="image/*" (change)="loadImage($event)" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <button type="submit" class="btn btn-primary float-right" [disabled]="form.invalid">
+          <i class="fa fa-save"></i> Guardar
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
+<br /><br />
+
+<swal #confirmSwal title="Información" text="El evento ha sido registrado" type="success" [showCancelButton]="false"
+  [focusCancel]="true" (confirm)="cerrarVentana()">
+</swal>
